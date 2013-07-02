@@ -1,8 +1,7 @@
 # OSCAD - Open Source Computer Aided Design(GNU/linux)
 
 ![OSCAD
- logo](https://github.com/Oscad/blob/master/Oscad-installer-linux/OSCAD/images/docs/book/figures/logo.png
- "OSCAD logo")
+ logo](://github.com/Oscad/Oscad-installer-linux/blob/master/OSCAD/images/logo.png "OSCAD logo")
 
 ## About
 

@@ -130,8 +130,12 @@ function CopyFritzing
  
   else
   cp -r My_Parts/Fritzing $HOME/.config/
-  fi   
-  			
+  fi 
+  
+  ##Copying setPath.py to Fritzing Directory
+  cp -p $installDir/OSCAD/setPath.py $installDir/OSCAD/Fritzingtokicad/setPath.py
+  
+  echo "Fritzing Installation completed"			
 }
 
 
@@ -321,8 +325,6 @@ cp -v oscad.desktop $HOME/Desktop/
 
 ##Installing Fritzing
 CopyFritzing
-##Copying setPath.py to Fritzing Directory
-cp $installDir/OSCAD/setPath.py $installDir/OSCAD/Fritzingtokicad/setPath.py
 
 echo "Installation completed"
 

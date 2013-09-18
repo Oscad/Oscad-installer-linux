@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<module fritzingVersion="0.4.3b.08.08.4406" moduleId="My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1" referenceFile="Battery block 9V.fzp">
+ <version>4</version>
+ <author>Fahim</author>
+ <title>My Battery</title>
+ <label>VCC</label>
+ <date>Tue Sep 17 2013</date>
+ <tags>
+  <tag>Battery</tag>
+  <tag>power supply</tag>
+  <tag>user part</tag>
+ </tags>
+ <properties>
+  <property name="family">battery</property>
+  <property showInLabel="yes" name="voltage">9V</property>
+  <property name="layer"></property>
+  <property name="part number"></property>
+  <property name="variant">variant 2</property>
+ </properties>
+ <description>Your standard 9 Volts battery block</description>
+ <views>
+  <iconView>
+   <layers image="icon/My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1_icon.svg">
+    <layer layerId="icon"/>
+   </layers>
+  </iconView>
+  <schematicView>
+   <layers image="schematic/My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1_schematic.svg">
+    <layer layerId="schematic"/>
+   </layers>
+  </schematicView>
+  <pcbView>
+   <layers image="pcb/My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1_pcb.svg">
+    <layer layerId="copper0"/>
+    <layer layerId="silkscreen"/>
+    <layer layerId="copper1"/>
+   </layers>
+  </pcbView>
+  <breadboardView>
+   <layers image="breadboard/My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1_breadboard.svg">
+    <layer layerId="breadboard"/>
+   </layers>
+  </breadboardView>
+ </views>
+ <connectors>
+  <connector type="male" id="connector0" name="+">
+   <description>Positive side</description>
+   <views>
+    <breadboardView>
+     <p legId="connector0leg" svgId="connector0pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector0pin" layer="schematic" terminalId="connector0terminal"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector0pin" layer="copper1"/>
+     <p svgId="connector0pin" layer="copper0"/>
+    </pcbView>
+   </views>
+  </connector>
+  <connector type="male" id="connector1" name="-">
+   <description>Negative side</description>
+   <views>
+    <breadboardView>
+     <p legId="connector1leg" svgId="connector1pin" layer="breadboard"/>
+    </breadboardView>
+    <schematicView>
+     <p svgId="connector1pin" layer="schematic" terminalId="connector1terminal"/>
+    </schematicView>
+    <pcbView>
+     <p svgId="connector1pin" layer="copper1"/>
+     <p svgId="connector1pin" layer="copper0"/>
+    </pcbView>
+   </views>
+  </connector>
+ </connectors>
+</module>

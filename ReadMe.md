@@ -21,7 +21,7 @@ equation for each simulation step. This feature is unique to OSCAD.
 * KiCad(Optional, will be installed by OSCAD installer)
 * NgSpice(Optional, will be installed by OSCAD  installer)
 * Python modules(Optional, will be installed by OSCAD installer)
-
+* Fritzing Module(0.8.3 or later) will be installed by OSCAD installer
 
 ## Install
 

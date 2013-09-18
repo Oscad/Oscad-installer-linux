@@ -92,7 +92,7 @@ class ProjectParam(template.MyTemplate):
 
   def body(self, master):
     w, h = master.winfo_screenwidth(), master.winfo_screenheight()
-    self.geometry("%dx%d" % (0.075*w, 0.6*h))
+    self.geometry("%dx%d" % (0.075*w, 0.8*h))
     self.resizable(0,0)
     self.attributes("-topmost",True)
 
@@ -154,6 +154,8 @@ class ProjectParam(template.MyTemplate):
         self.createButtonForCommandWithScilab(buttonWindow,self.openSMCSim,self.OSCAD_HOME+"/images/sci.png","SMCSim")
         self.createButtonForCommandWithScilab(buttonWindow,self.openModelBuilder,self.OSCAD_HOME+"/images/mb.png","Model builder")
         self.createButtonForCommandWithScilab(buttonWindow,self.openSubcircuitBuilder,self.OSCAD_HOME+"/images/sub.png","Subcircuit builder")
+	self.createButtonForCommandWithScilab(buttonWindow,self.openFritzing,self.OSCAD_HOME+"/images/fritzing.png","Fritzing")
+	self.createButtonForCommandWithScilab(buttonWindow,self.openFritzingtoKicad,self.OSCAD_HOME+"/images/Fr-Ki.png","Fritzing to Kicad")
 
     def createToolboxWithoutScilab():
         self.createButtonForCommandWithoutScilab(buttonWindow,self.openSchematic,self.OSCAD_HOME+"/images/se.png","Schematic Editor")
@@ -164,6 +166,8 @@ class ProjectParam(template.MyTemplate):
         self.createButtonForCommandWithoutScilab(buttonWindow,self.openLayout,self.OSCAD_HOME+"/images/lout.png","Layout Editor")
         self.createButtonForCommandWithoutScilab(buttonWindow,self.openModelBuilder,self.OSCAD_HOME+"/images/mb.png","Model builder")
         self.createButtonForCommandWithoutScilab(buttonWindow,self.openSubcircuitBuilder,self.OSCAD_HOME+"/images/sub.png","Subcircuit builder")
+	self.createButtonForCommandWithoutScilab(buttonWindow,self.openFritzing,self.OSCAD_HOME+"/images/fritzing.png","Fritzing")
+	self.createButtonForCommandWithoutScilab(buttonWindow,self.openFritzingtoKicad,self.OSCAD_HOME+"/images/Fr-Ki.png","Fritzing to Kicad")
     
     if os.path.isfile(OSCAD_HOME + "/bin/scilab54"):
         createToolboxWithScilab()
@@ -315,6 +319,34 @@ class ProjectParam(template.MyTemplate):
         print err
     self.text.insert(END, "Select a tool from tool menu\n")
     self.text.yview(END)
+
+  def openFritzing(self,e=None):
+    self.text.insert(END, "  Running Fritzing .........\n")
+    self.text.yview(END)
+  # Call all pending idle tasks, without processing any other events.
+    self.update_idletasks()
+    command= self.OSCAD_HOME+"/fritzing-0.8.3b.linux.i386/Fritzing"
+    	
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+    self.text.insert(END, "Select a tool from tool menu\n")
+    self.text.yview(END)
+
+  def openFritzingtoKicad(self,e=None):
+    self.text.insert(END, "  Running ngspice circuit simulator .........\n")
+    self.text.yview(END)
+  # Call all pending idle tasks, without processing any other events.
+    self.update_idletasks()
+    command=self.OSCAD_HOME+"/Fritzingtokicad/element_parsing.py "
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+    self.text.insert(END, "Select a tool from tool menu\n")
+    self.text.yview(END)	
+	
 
   def openSMCSim(self,e=None):
     self.text.insert(END, "  Running scilab based circuit simulator .........\n")

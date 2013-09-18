@@ -198,6 +198,32 @@ def openNgspice(e=None):
     text.insert(END, "Select a tool from tool menu\n")
     text.yview(END)
 
+def openFritzing(e=None):
+    text.insert(END, "  Running ngspice circuit simulator .........\n")
+    text.yview(END)
+  # Call all pending idle tasks, without processing any other events.
+    update_idletasks()
+    command=self.OSCAD_HOME+"/fritzing-0.8.3b.linux.i386/Fritzing"
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+    text.insert(END, "Select a tool from tool menu\n")
+    text.yview(END)
+
+def openFritzingtoKicad(e=None):
+    text.insert(END, "  Running Fritzing .........\n")
+    text.yview(END)
+  # Call all pending idle tasks, without processing any other events.
+    update_idletasks()
+    command=self.OSCAD_HOME+"/Fritzingtokicad/element_parsing.py "
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+    text.insert(END, "Select a tool from tool menu\n")
+    text.yview(END)
+
 def openSMCSim(e=None):
     text.insert(END, "  Running scilab based circuit simulator .........\n")
     text.yview(END)
@@ -273,6 +299,9 @@ createButtonForCommand(buttonWindow,openSubcircuitBuilder,OSCAD_HOME+"/images/sb
 createButtonForCommand(buttonWindow,openNetConverter,OSCAD_HOME+"/images/knLogo.jpg","NetList Converter")
 createButtonForCommand(buttonWindow,openNgspice,OSCAD_HOME+"/images/ngLogo.jpg","Ngspice")
 createButtonForCommand(buttonWindow,openSMCSim,OSCAD_HOME+"/images/slLogo.jpg","SMCSim")
+createButtonForCommand(buttonWindow,openFritzing,OSCAD_HOME+"/images/knLogo.jpg","Fritzing")
+createButtonForCommand(buttonWindow,openFritzingtoKicad,OSCAD_HOME+"/images/knLogo.jpg","Fritzing to Kicad")
+
 
 reportWindow = LabelFrame(root, bd=4, relief=SUNKEN,text="Report Window")
 reportWindow.pack(side=BOTTOM,fill="both", padx=5, pady=5,expand="Y")

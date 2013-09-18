@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module fritzingVersion="0.8.3b.07.27.048f" icon="Search.png" search="battery">
+    <title>Search</title>
+    <instances>
+        <instance moduleIdRef="My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1" modelIndex="1775302" path="/home/fahimk/.config/Fritzing/parts/user/My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="ArduPilotMega_v15" modelIndex="1775303" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/ArduPilotMega_v15.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-FreqCtrl-DS1307-SO8" modelIndex="1775304" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-freqctrl-ds1307-so8.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Arduino Pro" modelIndex="1775305" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Arduino_Pro.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MAX1704X-" modelIndex="1775306" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-max1704x-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-FKIT-COIN_CELL-LIR2450-H" modelIndex="1775307" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-fkit-coin_cell-lir2450-h.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-12PTH" modelIndex="1775308" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-12pth.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-245MM" modelIndex="1775309" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-245mm.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="ITG-3200-v11" modelIndex="1775310" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/ITG-3200-v11.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="GPSShield-v15" modelIndex="1775311" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/GPSShield-v15.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-AA-KIT" modelIndex="1775312" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-aa-kit.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-20PTH" modelIndex="1775313" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-20pth.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Arduino-Fio-v22" modelIndex="1775314" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Arduino-Fio-v22.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Arduino_MEGA_2560-Rev3" modelIndex="1775315" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Arduino_MEGA_2560-Rev3.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="1000AFDF10011leg" modelIndex="1775316" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/battery-AA.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MAX98306-ETD+" modelIndex="1775317" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-max98306-etd_.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-20PTH2" modelIndex="1775318" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-20pth2.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-FreqCtrl-DS3234-" modelIndex="1775319" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-freqctrl-ds3234-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="arduino_Uno_Rev3" modelIndex="1775320" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/arduino_Uno_Rev3.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-LIPO-OUTLINE-100" modelIndex="1775321" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-lipo-outline-100.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-2-AAA" modelIndex="1775322" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-2-aaa.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-20SMD" modelIndex="1775323" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-20smd.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-LM2931_FIXED-" modelIndex="1775324" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-lm2931_fixed-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MAX1555-" modelIndex="1775325" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-max1555-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="DeadOn RTC - DS3234 Breakout-v11" modelIndex="1775326" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/DeadOn RTC - DS3234 Breakout-v11.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="NCP1400_5V_Step-Up_v11" modelIndex="1775327" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/NCP1400_5V_Step-Up_v11.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-20MM_4LEGS" modelIndex="1775328" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-20mm_4legs.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-LIPO-OUTLINE-2000" modelIndex="1775329" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-lipo-outline-2000.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-AA" modelIndex="1775330" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-aa.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-FOB" modelIndex="1775331" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-fob.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Connectors-BC9VPC-" modelIndex="1775332" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-connectors-bc9vpc-.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="LilyPad_Arduino_USB" modelIndex="1775333" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/LilyPad_Arduino_USB.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Arduino DUE V02b" modelIndex="1775334" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Arduino_DUE_V02b.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="ArduinoBluetoothMatev13" modelIndex="1775335" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/ArduinoBluetoothMatev13.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Arduino_Leonardo_Rev3" modelIndex="1775336" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Arduino_Leonardo_Rev3.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-AA-PANEL" modelIndex="1775337" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-aa-panel.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Real_Time_Clock_Module___DS1307_RTC_Breakout_Board" modelIndex="1775338" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Real_Time_Clock_Module___DS1307_RTC_Breakout_Board.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="OBD-II-UART-v13" modelIndex="1775339" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/OBD-II-UART-v13.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Lilypad_PowerSupply-v18" modelIndex="1775340" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Lilypad_PowerSupply-v18.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="77c36646df552e9fe72f360837f556ccleg" modelIndex="1775341" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Battery block 9V.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="gs1011_breakout-v11" modelIndex="1775342" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/gs1011_breakout-v11.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-2-AA" modelIndex="1775343" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-2-aa.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MCP73833-" modelIndex="1775344" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-mcp73833-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="c7c8e292b3beec531de0c51f2576d329" modelIndex="1775345" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/4 x AAA Battery Mount.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="LilyPad Coincell-Battery-v17" modelIndex="1775346" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/LilyPad Coincell-Battery-v17.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MCP73831-" modelIndex="1775347" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-mcp73831-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-245PTH" modelIndex="1775348" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-245pth.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MCP7384XX-" modelIndex="1775349" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-mcp7384xx-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-MAX98300-ETA+" modelIndex="1775350" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-max98300-eta_.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="PowerSupply-Lipo-v15" modelIndex="1775351" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/PowerSupply-Lipo-v15.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-AAA" modelIndex="1775352" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-aaa.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="Memoire-1.0" modelIndex="1775353" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/Memoire-1.0.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-LIPO-OUTLINE-1100" modelIndex="1775354" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-lipo-outline-1100.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="LilyPad Battery-Connect-v11" modelIndex="1775355" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/LilyPad Battery-Connect-v11.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-12MM" modelIndex="1775356" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-12mm.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="LilyPad SimplePower-v13" modelIndex="1775357" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/LilyPad SimplePower-v13.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-PowerIC-LM2931-" modelIndex="1775358" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-poweric-lm2931-.fzp" flippedSMD="true">
+            <views/>
+        </instance>
+        <instance moduleIdRef="LiPo-USB-Charger-v21" modelIndex="1775359" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/LiPo-USB-Charger-v21.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="SparkFun-Electromechanical-BATTERY-1100" modelIndex="1775360" path="/home/fahimk/project_testing/testing_installer/OSCAD/fritzing-0.8.3b.linux.AMD64/pdb/core/sparkfun-electromechanical-battery-1100.fzp">
+            <views/>
+        </instance>
+    </instances>
+</module>

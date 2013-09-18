@@ -103,7 +103,40 @@ function checkMetanet
   fi
 }
 
+function CopyFritzing
+{
+  echo "Installing Fritzing"
+	
+  #untar at installed location
+  tar -xvf fritzing-0.8.3b.linux.i386.tar.bz2 -C $installDir/OSCAD  	
+  RetVal=$?
+  if [ $RetVal -eq 0 ]
+  then
+  echo "Fritzing Installed Sucessfully"
+  else
+  echo "Fritzing is not Installed"
+  fi
+  
+  echo "Copying file in .config/Fritzing"
+  if [ -d $HOME/.config/Fritzing ]
+  then
+
+  ##Copying user build fritzing component to .config folder
+  cp My_Part/parts/user/* $HOME/.config/Fritzing/parts/user
+  cp My_Part/parts/svg/user/breadboard/* $HOME/.config/Fritzing/parts/svg/user/breadboard
+  cp My_Part/parts/svg/user/icon/* $HOME/.config/Fritzing/parts/svg/user/icon
+  cp My_Part/parts/svg/user/pcb/* $HOME/.config/Fritzing/parts/svg/user/pcb
+  cp My_Part/parts/svg/user/schematic/* $HOME/.config/Fritzing/parts/svg/user/schematic
+ 
+  else
+  cp -r My_Parts/Fritzing $HOME/.config/
+  fi   
+  			
+}
+
+
 echo "Checking python Modules......................"
+sudo chmod 755 ./checkPythonModules.py
 ./checkPythonModules.py
 RetVal=$?
 [ $RetVal -eq 0 ] && echo "All python modules are available"
@@ -248,6 +281,13 @@ else
 fi
 echo "Installation started..............."
 
+if [ -d $installDir/OSCAD ]
+then
+echo "Renaming your old OSCAD folder to OSCAD.bak"
+cp -r $installDir/OSCAD $installDir/OSCAD.bak
+fi
+echo "Outof if loop"
+
 #tar -zxvf OSCAD.tar.gz -C $installDir
 cp -rv OSCAD $installDir
 
@@ -260,7 +300,10 @@ cat $installDir/OSCAD/setPath.py
 
 cp $installDir/OSCAD/setPathInstall.py $installDir/OSCAD/forntEnd/setPath.py
 sed -i 's@set_PATH_to_OSCAD@"'$installDir'/OSCAD"@g' $installDir/OSCAD/setPath.py
+sed -i 's@set_PATH_to_OSCAD@"'$installDir'/OSCAD"@g' $installDir/OSCAD/modelEditor/setPath.py
 cp $installDir/OSCAD/setPath.py $installDir/OSCAD/forntEnd/setPath.py 
+cp $installDir/OSCAD/setPath.py $installDir/OSCAD/subcktEditor/setPath.py 
+cp $installDir/OSCAD/setPath.py $installDir/OSCAD/modelEditor/setPath.py 
 cp $installDir/OSCAD/LPCSim/LPCSim/MainInstall.sci  $installDir/OSCAD/LPCSim/LPCSim/Main.sci
 sed -i 's@set_PATH_to_OSCAD@"'$installDir'/OSCAD"@g' $installDir/OSCAD/LPCSim/LPCSim/Main.sci
 chmod 755 $installDir/OSCAD/analysisInserter/*.py
@@ -275,6 +318,11 @@ sudo cp -v $installDir/OSCAD/images/logo.png /usr/share/icons/oscad.png
 
 echo "Setting up desktop icon..."
 cp -v oscad.desktop $HOME/Desktop/
+
+##Installing Fritzing
+CopyFritzing
+##Copying setPath.py to Fritzing Directory
+cp $installDir/OSCAD/setPath.py $installDir/OSCAD/Fritzingtokicad/setPath.py
 
 echo "Installation completed"
 

@@ -31,7 +31,7 @@ Please refer OSCAD book, Chapter 2 for installation instructions
 ## Usage
 
 Please refer OSCAD book, Chapter 4 for detailed usage
-Please note that Fritzing simulation through OSCAD is only for analog components,however you can get schematic and PCB for all components.
+Please note that Fritzing simulation through OSCAD is only for analog components,however you can get schematic and PCB view for all components.
 
 ## Documentation
 

@@ -17,7 +17,7 @@
   <property name="part number"></property>
   <property name="variant">variant 2</property>
  </properties>
- <description>Your standard 9 Volts battery block</description>
+ <description>Your standard 5 Volts battery block</description>
  <views>
   <iconView>
    <layers image="icon/My_Battery_7baa55eab09f0f8fc53b86cb48c4b8e1_1_icon.svg">

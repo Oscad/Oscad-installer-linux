@@ -1223,7 +1223,7 @@ def convertICintoBasicBlocks(schematicInfo,outputOption):
       elif compType=="vprint1":
         outputOption.append("print v("+words[1]+")\n")
         schematicInfo.insert(index,"* Printing option "+compType)
-      elif compType=="vcalc":
+      elif compType=="calc":
 	outputOption.append("plot "+words[2]+"\n")
         schematicInfo.insert(index,"* Plotting option "+compType)
       elif compType=="vprint8_1":
@@ -1243,7 +1243,7 @@ def convertICintoBasicBlocks(schematicInfo,outputOption):
           elif words[i+len(words)/2]=="0":
             outputOption.append("v("+words[i+1]+") ")
           else:
-            outputOption.append("v("+words[i+1]+")-v("+words[i+len(words)/2]+") ")
+            outputOption.append("(("+words[i+1]+")-v("+words[i+len(words)/2]+") ")
         outputOption.append("\n")
       elif compType=="vprint":
         outputOption.append("print v("+words[1]+")-v("+words[2]+")\n")
@@ -1251,6 +1251,9 @@ def convertICintoBasicBlocks(schematicInfo,outputOption):
       elif compType=="iplot":
         schematicInfo.insert(index,"V_"+words[0]+" "+words[1]+" "+words[2]+" 0")
         outputOption.append("plot i(V_"+words[0]+")\n")
+      elif compType=="powerplot":
+        outputOption.append("print ((v("+words[1]+")-v("+words[2]+"))^2)/("+words[3]+")\n")
+        schematicInfo.insert(index,"* Printting option "+compType)
       elif compType=="ic":
         print "-----------------------------------------------------------"
 	ic=raw_input('  Enter initial condition on output (default=0): ')

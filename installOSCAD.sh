@@ -108,7 +108,7 @@ function CopyFritzing
   echo "Installing Fritzing"
 	
   #untar at installed location
-  tar -xvf fritzing-0.8.3b.linux.i386.tar.bz2 -C $installDir/OSCAD  	
+  tar -xvf fritzing-0.8.0b.linux.i386.tar.bz2 -C $installDir/OSCAD  	
   RetVal=$?
   if [ $RetVal -eq 0 ]
   then

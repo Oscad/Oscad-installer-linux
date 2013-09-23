@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module fritzingVersion="0.8.3b.07.27.048f" icon="Search.png" search="Generic">
+<module fritzingVersion="0.8.0b.06.12.08d5" icon="Search.png" search="3 pin">
     <title>Search</title>
     <instances>
+        <instance moduleIdRef="GenIC_2754df38a7eb47b60431f1936bd15a62_1" modelIndex="1779453" path="/home/fahimk/.config/Fritzing/parts/user/GenIC_2754df38a7eb47b60431f1936bd15a62_1.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="1238DBDC00-toggle-switch" modelIndex="1779455" path="/home/fahimk/project_testing/testing_installer-32bit/OSCAD/fritzing-0.8.0b.linux.i386/pdb/core/basic-toggle-switch.fzp">
+            <views/>
+        </instance>
+        <instance moduleIdRef="mystery_part_sip_3_100mil" modelIndex="1779456" path="/home/fahimk/.config/Fritzing/partfactory/396f8726aa35dd12dbbc84b5d2b5a862/core/mystery_part_sip_3_100mil.fzp">
+            <views/>
+        </instance>
     </instances>
 </module>

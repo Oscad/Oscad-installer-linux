@@ -73,6 +73,19 @@ class myframe():
 		fname="comp_value.txt"
 		if os.path.exists(fname):
 			print "File found"
+			appendcompval = open("comp_value.txt",'a+')
+			clist=[]
+			for compval in appendcompval:
+         			clist.append(compval.strip().partition(':')[0])
+				print clist
+			for line in fileinput.input(['comp_list.txt']):
+        			print line.strip()
+        			if line.strip() in clist:
+                			continue
+        			else:
+                			appendcompval.write(line.strip()+':0')
+					appendcompval.write('\n')
+			appendcompval.close()			
 			for line in fileinput.input(['comp_value.txt']):
 				column=line.split(':')
 				label=Label(frame,text=column[0])

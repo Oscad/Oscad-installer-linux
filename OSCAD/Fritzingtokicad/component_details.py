@@ -73,19 +73,46 @@ class myframe():
 		fname="comp_value.txt"
 		if os.path.exists(fname):
 			print "File found"
-			appendcompval = open("comp_value.txt",'a+')
-			clist=[]
-			for compval in appendcompval:
-         			clist.append(compval.strip().partition(':')[0])
-				print clist
-			for line in fileinput.input(['comp_list.txt']):
-        			print line.strip()
-        			if line.strip() in clist:
-                			continue
-        			else:
-                			appendcompval.write(line.strip()+':0')
-					appendcompval.write('\n')
-			appendcompval.close()			
+			print "Renaming file comp_val.txt to comp_valbak.txt"
+			os.rename('comp_value.txt','comp_valbak.txt')
+			scancomplist=open("comp_list.txt",'r')
+			newcompval=open("comp_value.txt",'w+')
+			bakcompval=open("comp_valbak.txt",'r')
+			clist1=[]	
+			cval=[]
+			clist2=[]
+			for compval in bakcompval:
+				cval.append(compval.strip())
+	 			clist2.append(compval.strip().partition(':')[0])
+			for complist in scancomplist:
+				clist1.append(complist.strip())
+			print "Component Value List :",cval 
+			print "Component List1:",clist1
+			print "Component List2:",clist2
+			print "writing from comp_valbak.txt file to new comp_val.txt"
+			for reclist in open("comp_valbak.txt",'r'):
+				line=reclist.split(':')
+				print line[0]
+				if line[0] in clist1:
+					print "In clist1"
+					newcompval.write(reclist)
+				else:
+					continue
+			print "writing from comp_list.txt to new comp_val.txt"
+			for recval in open("comp_list.txt",'r'):
+				line=recval.strip()
+				if line in clist2:
+					print line,"Present in old list"
+					continue
+				else:
+					print line,"Not present in old list"
+					newcompval.write(line)
+					newcompval.write(':0')
+					newcompval.write('\n') 	
+	
+			scancomplist.close()
+			newcompval.close()
+			bakcompval.close()					
 			for line in fileinput.input(['comp_value.txt']):
 				column=line.split(':')
 				label=Label(frame,text=column[0])

@@ -116,7 +116,7 @@ function CopyFritzing
   else
   echo "Fritzing is not Installed"
   fi
-  
+  : <<'block' 
   echo "Copying file in .config/Fritzing"
   if [ -d $HOME/.config/Fritzing ]
   then
@@ -131,6 +131,8 @@ function CopyFritzing
   else
   cp -r My_Parts/Fritzing $HOME/.config/
   fi 
+  
+block
   
   ##Copying setPath.py to Fritzing Directory
   cp -p $installDir/OSCAD/setPath.py $installDir/OSCAD/Fritzingtokicad/setPath.py
@@ -288,7 +290,7 @@ echo "Installation started..............."
 if [ -d $installDir/OSCAD ]
 then
 echo "Renaming your old OSCAD folder to OSCAD.bak"
-cp -r $installDir/OSCAD $installDir/OSCAD.bak
+mv -r $installDir/OSCAD $installDir/OSCAD.bak
 fi
 echo "Outof if loop"
 

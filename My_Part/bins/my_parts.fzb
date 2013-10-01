@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module fritzingVersion="0.8.3b.07.27.048f" icon="Mine.png">
-    <title>My Parts</title>
-    <instances>
-        <instance moduleIdRef="GenIC_2754df38a7eb47b60431f1936bd15a62_1" modelIndex="1778804" path="/home/fahimk/.config/Fritzing/parts/user/GenIC_2754df38a7eb47b60431f1936bd15a62_1.fzp">
-            <views/>
-        </instance>
-    </instances>
-</module>

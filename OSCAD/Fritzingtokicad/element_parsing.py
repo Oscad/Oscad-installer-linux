@@ -41,7 +41,7 @@ root=tree.getroot()
 #print (root)
 
 #Getting Instances
-instances=root.getchildren()[1]
+instances=root.getchildren()[2]
 #print(instances)
 
 #Get the element instances

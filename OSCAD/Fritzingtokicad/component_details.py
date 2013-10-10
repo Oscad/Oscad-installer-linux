@@ -7,6 +7,7 @@ import tkMessageBox
 import subprocess
 import sys
 import os
+import re
 class AutoScrollbar(Scrollbar):
     # a scrollbar that hides itself if it's not needed.  only
     # works if you use the grid geometry manager.
@@ -129,9 +130,16 @@ class myframe():
 				label=Label(frame,text=line)
 				label.grid(row=count,sticky=W+E+N+S)
 				var[count] = StringVar()
-				entry=Entry(frame,width=10,textvariable=var[count])
-				entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0 )
-				count=count+1
+				matchline=re.match(r'RWire',line,flags=0)
+				if matchline:
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,0)
+					count=count+1
+				else:
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					count=count+1
 		c_obj.create_window(0, 0, anchor=NW, window=frame)
 		frame.update_idletasks()
 		c_obj.config(scrollregion=c_obj.bbox("all"))

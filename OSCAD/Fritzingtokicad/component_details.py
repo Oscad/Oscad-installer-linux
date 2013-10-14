@@ -130,11 +130,17 @@ class myframe():
 				label=Label(frame,text=line)
 				label.grid(row=count,sticky=W+E+N+S)
 				var[count] = StringVar()
-				matchline=re.match(r'RWire',line,flags=0)
-				if matchline:
+				matchwire=re.match(r'RWire',line,flags=0)
+				matchplot=re.match(r'U_PLOT',line,flags=0)
+				if matchwire:
 					entry=Entry(frame,width=10,textvariable=var[count])
 					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
 					entry.insert(count,0)
+					count=count+1
+				elif matchplot:
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'vplot8_1')
 					count=count+1
 				else:
 					entry=Entry(frame,width=10,textvariable=var[count])

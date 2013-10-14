@@ -13,7 +13,7 @@ sed -e "1d" -e "s/None//g" -e "s/\S*\(connector\)\S*//g" -e "s/Wire/RWire/g" $fn
 while read line
 do 
 echo $line
-done<temp0_sample.txt>temp1_sample.txt
+done <temp0_sample.txt>temp1_sample.txt
 
 #Making proper netlist from above file
 while read line
@@ -70,6 +70,9 @@ do
         }'
 	
 done<temp1_sample.txt>temp2_sample.txt
+
+##Removing blank line
+sed -i '/^$/d' temp2_sample.txt
 
 ####Taking backup for .cir file
 

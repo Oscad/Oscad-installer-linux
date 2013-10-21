@@ -5,15 +5,57 @@ fname=$1
 #echo $OSCAD_HOME
 
 
+#Modifying file for 14-pin Digital IC
+while read line
+do
+count=0
+if [[ $line =~ ^U_AND || $line =~ ^U_OR || $line =~ ^U_NAND || $line =~ ^U_NOR || $line =~ ^U_XOR || $line =~ ^U_XNOR ]];then
+echo $line|awk '
+{       mc = 0
+        for(i = 2; i < NF; i += 2) {
+                c = substr($i, 10) + 0
+                if(c != 6 && c != 13) {
+                        p[c] = $(i + 1)
+                        if(c > mc) mc = c
+                }
+		if(c==6)
+                {
+                gnd = $(i + 1)
+                if(c>mc) mc = c
+                }
+                if(c==13)
+                {
+                vcc = $(i + 1)
+                if(c>mc) mc=c
+                }
+
+        }
+        lc = 0
+        for(i = 0; i <= mc; i++)
+                if(i in p) {
+                        if(lc++ == 0) o = $1i
+                        o = o "  connector" i "  " p[i]
+                        if(lc == 3) {
+                                print o " " gnd " " vcc
+                                lc = 0
+                        }
+                        delete p[i]
+                 }
+ }' 
+else
+echo $line
+fi
+done < $fname > temp0_sample.txt  
+
 
 #Removing unwanted content from output of xml file reading
-sed -e "1d" -e "s/None//g" -e "s/\S*\(connector\)\S*//g" -e "s/Wire/RWire/g" $fname>temp0_sample.txt
+sed -e "/PCB/d" -e "s/None//g" -e "s/\S*\(connector\)\S*//g" -e "s/Wire/RWire/g" temp0_sample.txt>temp1_sample.txt
 
 ##Making file proper without unwanted space
 while read line
 do 
 echo $line
-done <temp0_sample.txt>temp1_sample.txt
+done <temp1_sample.txt>temp2_sample.txt
 
 #Making proper netlist from above file
 while read line
@@ -53,26 +95,59 @@ do
 	else printf "error\n"
 	}
 	{       
-             if ($4~/pin[0-9][0-9][A-E]/) printf "%.5sA\n",$4; 
-        else if ($4~/pin[0-9][0-9][F-J]/) printf "%.5sF\n",$4;
-	else if ($4~/pin[0-9][0-9][X]/) printf "0\n",$4;
-        else if ($4~/pin[0-9][0-9][Y]/) printf "%.3sY\n",$4;
-        else if ($4~/pin[0-9][0-9][W]/) printf "0\n",$4;
-        else if ($4~/pin[0-9][0-9][Z]/) printf "%.3sZ\n",$4;
-        else if ($4~/pin[0-9][A-E]/) printf "%.4sA\n",$4;
-        else if ($4~/pin[0-9][F-J]/) printf "%.4sF\n",$4;
-        else if ($4~/pin[0-9][X]/) printf "0\n",$4;
-        else if ($4~/pin[0-9][Y]/) printf "%.3sY\n",$4;
-        else if ($4~/pin[0-9][W]/) printf "0\n",$4;
-        else if ($4~/pin[0-9][Z]/) printf "%.3sZ\n",$4;
+             if ($4~/pin[0-9][0-9][A-E]/) printf "%.5sA ",$4; 
+        else if ($4~/pin[0-9][0-9][F-J]/) printf "%.5sF ",$4;
+        else if ($4~/pin[0-9][0-9][X]/) printf "0 ",$4;
+        else if ($4~/pin[0-9][0-9][Y]/) printf "%.3sY ",$4;
+        else if ($4~/pin[0-9][0-9][W]/) printf "0 ",$4;
+        else if ($4~/pin[0-9][0-9][Z]/) printf "%.3sZ ",$4;
+        else if ($4~/pin[0-9][A-E]/) printf "%.4sA ",$4;
+        else if ($4~/pin[0-9][F-J]/) printf "%.4sF ",$4;
+        else if ($4~/pin[0-9][X]/) printf "0 ",$4;
+        else if ($4~/pin[0-9][Y]/) printf "%.3sY ",$4;
+        else if ($4~/pin[0-9][W]/) printf "0 ",$4;
+        else if ($4~/pin[0-9][Z]/) printf "%.3sZ ",$4;
         else if ($4=="") printf "\n",$4;
+        else printf "error\n"
+        }
+	{       
+             if ($5~/pin[0-9][0-9][A-E]/) printf "%.5sA ",$5; 
+        else if ($5~/pin[0-9][0-9][F-J]/) printf "%.5sF ",$5;
+        else if ($5~/pin[0-9][0-9][X]/) printf "0 ",$5;
+        else if ($5~/pin[0-9][0-9][Y]/) printf "%.3sY ",$5;
+        else if ($5~/pin[0-9][0-9][W]/) printf "0 ",$5;
+        else if ($5~/pin[0-9][0-9][Z]/) printf "%.3sZ ",$5;
+        else if ($5~/pin[0-9][A-E]/) printf "%.4sA ",$5;
+        else if ($5~/pin[0-9][F-J]/) printf "%.4sF ",$5;
+        else if ($5~/pin[0-9][X]/) printf "0 ",$5;
+        else if ($5~/pin[0-9][Y]/) printf "%.3sY ",$5;
+        else if ($5~/pin[0-9][W]/) printf "0 ",$5;
+        else if ($5~/pin[0-9][Z]/) printf "%.3sZ ",$5;
+        else if ($5=="") printf "\n",$5;
+        else printf "error\n"
+        }
+           
+	{       
+             if ($6~/pin[0-9][0-9][A-E]/) printf "%.5sA\n",$6; 
+        else if ($6~/pin[0-9][0-9][F-J]/) printf "%.5sF\n",$6;
+	else if ($6~/pin[0-9][0-9][X]/) printf "0\n",$6;
+        else if ($6~/pin[0-9][0-9][Y]/) printf "%.3sY\n",$6;
+        else if ($6~/pin[0-9][0-9][W]/) printf "0\n",$6;
+        else if ($6~/pin[0-9][0-9][Z]/) printf "%.3sZ\n",$6;
+        else if ($6~/pin[0-9][A-E]/) printf "%.4sA\n",$6;
+        else if ($6~/pin[0-9][F-J]/) printf "%.4sF\n",$6;
+        else if ($6~/pin[0-9][X]/) printf "0\n",$6;
+        else if ($6~/pin[0-9][Y]/) printf "%.3sY\n",$6;
+        else if ($6~/pin[0-9][W]/) printf "0\n",$6;
+        else if ($6~/pin[0-9][Z]/) printf "%.3sZ\n",$6;
+        else if ($6=="") printf "\n",$6;
         else printf "error\n"
         }'
 	
-done<temp1_sample.txt>temp2_sample.txt
+done<temp2_sample.txt>temp3_sample.txt
 
 ##Removing blank line
-sed -i '/^$/d' temp2_sample.txt
+sed -i '/^$/d' temp3_sample.txt
 
 ####Taking backup for .cir file
 
@@ -139,12 +214,12 @@ comment
 
 
 #Taking List of element in the circuit
-awk '{print $1}' temp2_sample.txt > comp_list.txt
+awk '{print $1}' temp3_sample.txt > comp_list.txt
 #Creating Reference file for future and entering value
-cp temp2_sample.txt refrence.txt 
+cp temp3_sample.txt refrence.txt 
 
 #Removing Temp File
-#rm temp0_sample.txt temp1_sample.txt temp2_sample.txt
+#rm temp0_sample.txt temp1_sample.txt temp2_sample.txt temp3_sample.txt
 #rm $fname
 exit 0
 

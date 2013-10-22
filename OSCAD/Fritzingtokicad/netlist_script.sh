@@ -20,7 +20,7 @@ echo $line|awk '
                 }
 		if(c==6)
                 {
-                gnd = $(i + 1)
+                gnd = 0
                 if(c>mc) mc = c
                 }
                 if(c==13)
@@ -74,7 +74,7 @@ do
 	else if ($2~/pin[0-9][Y]/) printf "%.3sY ",$2;
 	else if ($2~/pin[0-9][W]/) printf "0 ",$2;
 	else if ($2~/pin[0-9][Z]/) printf "%.3sZ ",$2;
-	
+	else if ($2==0) printf "0 ",$2;	
 	else if ($2=="") printf "\n",$2;
 	else printf "error "
 	}
@@ -91,6 +91,7 @@ do
         else if ($3~/pin[0-9][Y]/) printf "%.3sY ",$3;
         else if ($3~/pin[0-9][W]/) printf "0 ",$3;
         else if ($3~/pin[0-9][Z]/) printf "%.3sZ ",$3;
+	else if ($3==0) printf "0 ",$3;
 	else if ($3=="") printf "\n",$3;
 	else printf "error\n"
 	}
@@ -107,6 +108,7 @@ do
         else if ($4~/pin[0-9][Y]/) printf "%.3sY ",$4;
         else if ($4~/pin[0-9][W]/) printf "0 ",$4;
         else if ($4~/pin[0-9][Z]/) printf "%.3sZ ",$4;
+	else if ($4==0) printf "0 ",$4;
         else if ($4=="") printf "\n",$4;
         else printf "error\n"
         }
@@ -123,6 +125,7 @@ do
         else if ($5~/pin[0-9][Y]/) printf "%.3sY ",$5;
         else if ($5~/pin[0-9][W]/) printf "0 ",$5;
         else if ($5~/pin[0-9][Z]/) printf "%.3sZ ",$5;
+	else if ($5==0) printf "0 ",$5;
         else if ($5=="") printf "\n",$5;
         else printf "error\n"
         }
@@ -140,6 +143,7 @@ do
         else if ($6~/pin[0-9][Y]/) printf "%.3sY\n",$6;
         else if ($6~/pin[0-9][W]/) printf "0\n",$6;
         else if ($6~/pin[0-9][Z]/) printf "%.3sZ\n",$6;
+	else if ($6==0) printf "0\n",$6;
         else if ($6=="") printf "\n",$6;
         else printf "error\n"
         }'

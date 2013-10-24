@@ -130,17 +130,45 @@ class myframe():
 				label=Label(frame,text=line)
 				label.grid(row=count,sticky=W+E+N+S)
 				var[count] = StringVar()
-				matchwire=re.match(r'RWire',line,flags=0)
-				matchplot=re.match(r'U_PLOT',line,flags=0)
-				if matchwire:
+			     	if re.search(r"\ARWire",line):
 					entry=Entry(frame,width=10,textvariable=var[count])
 					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
 					entry.insert(count,0)
 					count=count+1
-				elif matchplot:
+				elif re.search(r"\AU_PLOT",line):
 					entry=Entry(frame,width=10,textvariable=var[count])
 					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
 					entry.insert(count,'vplot8_1')
+					count=count+1
+				elif re.search(r"\AU_AND",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls08')
+					count=count+1
+				elif re.search(r"\AU_OR",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls32')
+					count=count+1
+				elif re.search(r"\AU_NAND",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls00')
+					count=count+1
+				elif re.search(r"\AU_NOR",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls02')
+					count=count+1
+				elif re.search(r"\AU_XOR",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls86')
+					count=count+1
+				elif re.search(r"\AU_XNOR",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74266')
 					count=count+1
 				else:
 					entry=Entry(frame,width=10,textvariable=var[count])

@@ -4,6 +4,7 @@ fname=$1
 #OSCAD_HOME=/home/fahimk/Oscad_Work/installed_OSCAD/OSCAD
 #echo $OSCAD_HOME
 
+sed -e "s/None//g" $fname > temp00_sample.txt
 
 #Modifying file for 14-pin Digital IC
 while read line
@@ -42,10 +43,46 @@ echo $line|awk '
                         delete p[i]
                  }
  }' 
+
+elif [[ $line =~ ^U_NOT ]];then
+echo $line|awk '
+{       mc = 0
+        for(i = 2; i < NF; i += 2) {
+                c = substr($i, 10) + 0
+                if(c != 6 && c != 13) {
+                        p[c] = $(i + 1)
+                        if(c > mc) mc = c
+                }
+		if(c==6)
+                {
+                gnd = 0
+                if(c>mc) mc = c
+                }
+                if(c==13)
+                {
+                vcc = $(i + 1)
+                if(c>mc) mc=c
+                }
+
+        }
+        lc = 0
+        for(i = 0; i <= mc; i++)
+                if(i in p) {
+                        if(lc++ == 0) o = $1i
+                        o = o "  connector" i "  " p[i]
+                        if(lc == 2) {
+                                print o " " gnd " " vcc
+                                lc = 0
+                        }
+                        delete p[i]
+                 }
+ }'
+
 else
 echo $line
+
 fi
-done < $fname > temp0_sample.txt  
+done < temp00_sample.txt > temp0_sample.txt  
 
 
 #Removing unwanted content from output of xml file reading

@@ -32,7 +32,10 @@ echo $line|awk '
 
         }
         lc = 0
-        for(i = 0; i <= mc; i++)
+	mcu = mc
+	mcl = mc - 7
+	for(i = 0; i <= mcl; i++)
+	{
                 if(i in p) {
                         if(lc++ == 0) o = $1i
                         o = o "  connector" i "  " p[i]
@@ -42,6 +45,22 @@ echo $line|awk '
                         }
                         delete p[i]
                  }
+		
+	}
+        lc = 0
+	for(j = mcu; j>6; j--)
+	{
+		if(j in p) {
+			if(lc++ == 0) o = $1j
+			o = o "  connector" j " " p[j]
+			if(lc == 3) {
+				print o " " gnd " " vcc
+				lc = 0
+			}
+			delete p[j]
+		}
+			
+     }
  }' 
 
 elif [[ $line =~ ^U_NOT ]];then
@@ -66,7 +85,9 @@ echo $line|awk '
 
         }
         lc = 0
-        for(i = 0; i <= mc; i++)
+	    mcu = mc
+        mcl = mc - 7
+        for(i = 0; i <= mcl; i++){
                 if(i in p) {
                         if(lc++ == 0) o = $1i
                         o = o "  connector" i "  " p[i]
@@ -76,6 +97,22 @@ echo $line|awk '
                         }
                         delete p[i]
                  }
+	}
+        lc = 0
+	for(j=mcu; j>6; j--){
+                if(j in p) {
+                        if(lc++ == 0) o = $1j
+                        o = o "  connector" j "  " p[j]
+                        if(lc == 2) {
+                                print o " " gnd " " vcc
+                                lc = 0
+                        }
+                        delete p[j]
+                 }
+        }
+
+
+	
  }'
 
 else

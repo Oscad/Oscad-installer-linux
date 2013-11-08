@@ -170,6 +170,31 @@ class myframe():
 					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
 					entry.insert(count,'74266')
 					count=count+1
+				elif re.search(r"\AU_NOT",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls04')
+					count=count+1
+				elif re.search(r"\AU_DFF",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls74')
+					count=count+1
+				elif re.search(r"\AU_JKFF",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls109')
+					count=count+1
+				elif re.search(r"\AU_SRFF",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls71')
+					count=count+1
+				elif re.search(r"\AU_TFF",line):
+					entry=Entry(frame,width=10,textvariable=var[count])
+					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)
+					entry.insert(count,'74ls75')
+					count=count+1
 				else:
 					entry=Entry(frame,width=10,textvariable=var[count])
 					entry.grid(row=count,column=1,sticky=W+E+N+S,padx=0,pady=0)

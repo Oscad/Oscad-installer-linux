@@ -517,6 +517,24 @@ def convertICintoBasicBlocks(schematicInfo,outputOption):
         schematicInfo.append(".model "+ compName+"adc adc_bridge(in_low=0.8 in_high=2.0)")
        # Add model for digital-to-analog bridge
         schematicInfo.append(".model "+ compName+"dac dac_bridge(out_low=0.25 out_high=5.0 out_undef=1.8 t_rise=0.5e-9 t_fall=0.5e-9)")
+      elif (compType=="7475" or compType=="74hc75" or compType=="74ls75"):
+       # Add analog to digital converter for inputs
+        schematicInfo.append("a"+str(k)+" ["+words[2]+" "+words[3]+" "+words[4]+" "+words[1]+"] ["+words[2]+"_in "+words[3]+"_in "+words[4]+"_in "+words[1]+"_in] "+compName+"adc")
+        k=k+1
+       # Add T Flip-flop
+        schematicInfo.append("a"+str(k)+" "+words[2]+"_in "+words[3]+"_in ~"+words[4]+"_in ~"+words[1]+"_in "+words[5]+"_out "+words[6]+"_out "+compName)
+        k=k+1
+       # Add digital to analog converter for outputs
+        schematicInfo.append("a"+str(k)+" ["+words[5]+"_out "+words[6]+"_out] ["+words[5]+" "+words[6]+"] "+" "+compName+"dac")
+        k=k+1
+       # Insert comment in-place of components
+        schematicInfo.insert(index,"* "+compType)
+       # Add model for T Flip-Flop
+        schematicInfo.append(".model "+ compName+" d_tff")
+       # Add model for analog-to-digital bridge
+        schematicInfo.append(".model "+ compName+"adc adc_bridge(in_low=0.8 in_high=2.0)")
+       # Add model for digital-to-analog bridge
+        schematicInfo.append(".model "+ compName+"dac dac_bridge(out_low=0.25 out_high=5.0 out_undef=1.8 t_rise=0.5e-9 t_fall=0.5e-9)")
       elif (compType=="74107" or compType=="74hc107" or compType=="74ls107"):
         if len(words)>11: 
          # Add analog to digital converter for inputs
@@ -584,6 +602,24 @@ def convertICintoBasicBlocks(schematicInfo,outputOption):
         schematicInfo.append(".model "+ compName+"adc adc_bridge(in_low=0.8 in_high=2.0)")
        # Add model for digital-to-analog bridge
         schematicInfo.append(".model "+ compName+"dac dac_bridge(out_low=0.25 out_high=5.0 out_undef=1.8 t_rise=0.5e-9 t_fall=0.5e-9)")
+      elif (compType=="7471" or compType=="74hc71" or compType=="74ls71"):
+       # Add analog to digital converter for inputs
+        schematicInfo.append("a"+str(k)+" ["+words[2]+" "+words[3]+" "+words[4]+" "+words[5]+" "+words[1]+"] ["+words[2]+"_in "+words[3]+"_in "+words[4]+"_in "+words[5]+"_in "+words[1]+"_in] "+compName+"adc")
+        k=k+1
+       # Add S-R Flip-flop
+        schematicInfo.append("a"+str(k)+" "+words[2]+"_in ~"+words[3]+"_in "+words[4]+"_in ~"+words[5]+"_in ~"+words[1]+"_in "+words[6]+"_out "+words[7]+"_out "+compName)
+        k=k+1
+       # Add digital to analog converter for outputs
+        schematicInfo.append("a"+str(k)+" ["+words[6]+"_out "+words[7]+"_out] ["+words[6]+" "+words[7]+"] "+" "+compName+"dac")
+        k=k+1
+       # Insert comment in-place of components
+        schematicInfo.insert(index,"* "+compType)
+       # Add model for SR Flip-Flop
+        schematicInfo.append(".model "+ compName+" d_srff")
+       # Add model for analog-to-digital bridge741
+        schematicInfo.append(".model "+ compName+"adc adc_bridge(in_low=0.8 in_high=2.0)")
+       # Add model for digital-to-analog bridge
+        schematicInfo.append(".model "+ compName+"dac dac_bridge(out_low=0.25 out_high=5.0 out_undef=1.8 t_rise=0.5e-9 t_fall=0.5e-9)")	
       elif (compType=="74112" or compType=="74hc112" or compType=="74ls112"):
         if len(words)>12: 
           schematicInfo.append("a"+str(k)+" "+words[3]+" "+words[2]+" ~"+words[1]+" ~"+words[4]+" ~"+words[15]+" "+words[5]+" "+words[6]+" "+compName)
@@ -1243,7 +1279,7 @@ def convertICintoBasicBlocks(schematicInfo,outputOption):
           elif words[i+len(words)/2]=="0":
             outputOption.append("v("+words[i+1]+") ")
           else:
-            outputOption.append("(("+words[i+1]+")-v("+words[i+len(words)/2]+") ")
+            outputOption.append("v("+words[i+1]+")-v("+words[i+len(words)/2]+") ")
         outputOption.append("\n")
       elif compType=="vprint":
         outputOption.append("print v("+words[1]+")-v("+words[2]+")\n")

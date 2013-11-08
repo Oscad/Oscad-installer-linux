@@ -59,7 +59,6 @@ echo $line|awk '
 			}
 			delete p[j]
 		}
-			
      }
  }' 
 
@@ -82,7 +81,6 @@ echo $line|awk '
                 vcc = $(i + 1)
                 if(c>mc) mc=c
                 }
-
         }
         lc = 0
 	    mcu = mc
@@ -110,11 +108,143 @@ echo $line|awk '
                         delete p[j]
                  }
         }
-
-
-	
  }'
 
+elif [[ $line =~ ^U_DFF ]];then
+echo $line|awk '
+{       
+        for(i = 2; i < NF; i += 2) {
+                c = $i
+                if(c != "gnd" && c != "vcc") {
+			
+			if(c=="d1") { d1 = $(i +1) }
+			else if(c=="d2") { d2 = $(i + 1) }
+			else if(c=="clk1") { clk1 = $(i+1) }
+			else if(c=="clk2") { clk2 = $(i+1) }
+			else if(c=="set1") { set1 = $(i+1) }
+			else if(c=="set2") { set2 = $(i+1) }
+			else if(c=="reset1") { reset1 = $(i+1) }
+			else if(c=="reset2") { reset2 = $(i+1) }
+			else if(c=="q1") { q1=$(i+1) }
+			else if(c=="q2") { q2=$(i+1) }
+			else if(c=="qbar1") { qbar1=$(i+1) }
+			else if(c=="qbar2") { qbar2=$(i+1) } 
+                 }
+		if(c=="gnd")
+                {
+                gnd = 0
+                }
+                if(c=="vcc")
+                {
+                vcc = $(i + 1)
+                }
+	}
+		print $1"0 " reset1" "d1" "clk1" "set1" "q1" "qbar1" "gnd" "vcc 
+		print $1"1 " reset2" "d2" "clk2" "set2" "q2" "qbar2" "gnd" "vcc
+}'
+
+elif [[ $line =~ ^U_JKFF ]];then
+echo $line|awk '
+{       
+        for(i = 2; i < NF; i += 2) {
+                c = $i
+                if(c != "gnd" && c != "vcc") {
+			
+			if(c=="j1") { j1 = $(i+1) }
+			else if(c=="k1") { k1 = $(i+1) }
+			else if(c=="j2") { j2=$(i+1) }
+			else if(c=="k2") { k2=$(i+1) }
+			else if(c=="clk1") { clk1 = $(i+1) }
+			else if(c=="clk2") { clk2 = $(i+1) }
+			else if(c=="set1") { set1 = $(i+1) }
+			else if(c=="set2") { set2 = $(i+1) }
+			else if(c=="reset1") { reset1 = $(i+1) }
+			else if(c=="reset2") { reset2 = $(i+1) }
+			else if(c=="q1") { q1=$(i+1) }
+			else if(c=="q2") { q2=$(i+1) }
+			else if(c=="qbar1") { qbar1=$(i+1) }
+			else if(c=="qbar2") { qbar2=$(i+1) } 
+                }
+		if(c=="gnd")
+                {
+                gnd = 0
+                }
+                if(c=="vcc")
+                {
+                vcc = $(i + 1)
+                }
+	}
+		print $1"0 " reset1" "j1" "k1" "clk1" "set1" "q1" "qbar1" "gnd" "vcc 
+		print $1"1 " reset2" "j2" "k2" "clk2" "set2" "q2" "qbar2" "gnd" "vcc
+}'
+
+elif [[ $line =~ ^U_SRFF ]];then
+echo $line|awk '
+{       
+        for(i = 2; i < NF; i += 2) {
+                c = $i
+                if(c != "gnd" && c != "vcc") {
+			
+			if(c=="s1") { s1 = $(i +1) }
+			else if(c=="s2") { s2 = $(i + 1) }
+			else if(c=="s3") { s3 = $(i + 1) }
+			else if(c=="r1") { r1 = $(i + 1) }
+			else if(c=="r2") { r2 = $(i + 1) }
+			else if(c=="r3") { r3 = $(i + 1) }
+			else if(c=="clk") { clk = $(i+1) }
+			else if(c=="NC") { NC = $(i+1) }
+			else if(c=="set") { set = $(i+1) }
+			else if(c=="reset") { reset = $(i+1) }
+			else if(c=="q") { q=$(i+1) }
+			else if(c=="qbar") { qbar=$(i+1) }
+			
+                 }
+		if(c=="gnd")
+                {
+                gnd = 0
+                }
+                if(c=="vcc")
+                {
+                vcc = $(i + 1)
+                }
+	}
+		print $1"0 " reset" "s1" "r1" "clk" "set" "q" "qbar" "gnd" "vcc 
+		print $1"1 " reset" "s2" "r2" "clk" "set" "q" "qbar" "gnd" "vcc
+		print $1"2 " reset" "s3" "r3" "clk" "set" "q" "qbar" "gnd" "vcc
+}'
+
+elif [[ $line =~ ^U_TFF ]];then
+echo $line|awk '
+{       
+        for(i = 2; i < NF; i += 2) {
+                c = $i
+                if(c != "gnd" && c != "vcc") {
+			
+			if(c=="t1") { t1 = $(i +1) }
+			else if(c=="t2") { t2 = $(i + 1) }
+			else if(c=="clk1") { clk1 = $(i+1) }
+			else if(c=="clk2") { clk2 = $(i+1) }
+			else if(c=="set1") { set1 = $(i+1) }
+			else if(c=="set2") { set2 = $(i+1) }
+			else if(c=="reset1") { reset1 = $(i+1) }
+			else if(c=="reset2") { reset2 = $(i+1) }
+			else if(c=="q1") { q1=$(i+1) }
+			else if(c=="q2") { q2=$(i+1) }
+			else if(c=="qbar1") { qbar1=$(i+1) }
+			else if(c=="qbar2") { qbar2=$(i+1) } 
+                 }
+		if(c=="gnd")
+                {
+                gnd = 0
+                }
+                if(c=="vcc")
+                {
+                vcc = $(i + 1)
+                }
+	}
+		print $1"0 " reset1" "t1" "clk1" "set1" "q1" "qbar1" "gnd" "vcc 
+		print $1"1 " reset2" "t2" "clk2" "set2" "q2" "qbar2" "gnd" "vcc
+}'
 else
 echo $line
 
@@ -205,20 +335,92 @@ do
         }
            
 	{       
-             if ($6~/pin[0-9][0-9][A-E]/) printf "%.5sA\n",$6; 
-        else if ($6~/pin[0-9][0-9][F-J]/) printf "%.5sF\n",$6;
-	else if ($6~/pin[0-9][0-9][X]/) printf "0\n",$6;
-        else if ($6~/pin[0-9][0-9][Y]/) printf "%.3sY\n",$6;
-        else if ($6~/pin[0-9][0-9][W]/) printf "0\n",$6;
-        else if ($6~/pin[0-9][0-9][Z]/) printf "%.3sZ\n",$6;
-        else if ($6~/pin[0-9][A-E]/) printf "%.4sA\n",$6;
-        else if ($6~/pin[0-9][F-J]/) printf "%.4sF\n",$6;
-        else if ($6~/pin[0-9][X]/) printf "0\n",$6;
-        else if ($6~/pin[0-9][Y]/) printf "%.3sY\n",$6;
-        else if ($6~/pin[0-9][W]/) printf "0\n",$6;
-        else if ($6~/pin[0-9][Z]/) printf "%.3sZ\n",$6;
-	else if ($6==0) printf "0\n",$6;
+             if ($6~/pin[0-9][0-9][A-E]/) printf "%.5sA ",$6; 
+        else if ($6~/pin[0-9][0-9][F-J]/) printf "%.5sF ",$6;
+	else if ($6~/pin[0-9][0-9][X]/) printf "0 ",$6;
+        else if ($6~/pin[0-9][0-9][Y]/) printf "%.3sY ",$6;
+        else if ($6~/pin[0-9][0-9][W]/) printf "0 ",$6;
+        else if ($6~/pin[0-9][0-9][Z]/) printf "%.3sZ ",$6;
+        else if ($6~/pin[0-9][A-E]/) printf "%.4sA ",$6;
+        else if ($6~/pin[0-9][F-J]/) printf "%.4sF ",$6;
+        else if ($6~/pin[0-9][X]/) printf "0 ",$6;
+        else if ($6~/pin[0-9][Y]/) printf "%.3sY ",$6;
+        else if ($6~/pin[0-9][W]/) printf "0 ",$6;
+        else if ($6~/pin[0-9][Z]/) printf "%.3sZ ",$6;
+	else if ($6==0) printf "0 ",$6;
         else if ($6=="") printf "\n",$6;
+        else printf "error\n"
+        }
+	
+	{       
+             if ($7~/pin[0-9][0-9][A-E]/) printf "%.5sA ",$7; 
+        else if ($7~/pin[0-9][0-9][F-J]/) printf "%.5sF ",$7;
+	else if ($7~/pin[0-9][0-9][X]/) printf "0 ",$7;
+        else if ($7~/pin[0-9][0-9][Y]/) printf "%.3sY ",$7;
+        else if ($7~/pin[0-9][0-9][W]/) printf "0 ",$7;
+        else if ($7~/pin[0-9][0-9][Z]/) printf "%.3sZ ",$7;
+        else if ($7~/pin[0-9][A-E]/) printf "%.4sA ",$7;
+        else if ($7~/pin[0-9][F-J]/) printf "%.4sF ",$7;
+        else if ($7~/pin[0-9][X]/) printf "0 ",$7;
+        else if ($7~/pin[0-9][Y]/) printf "%.3sY ",$7;
+        else if ($7~/pin[0-9][W]/) printf "0 ",$7;
+        else if ($7~/pin[0-9][Z]/) printf "%.3sZ ",$7;
+	else if ($7==0) printf "0 ",$7;
+        else if ($7=="") printf "\n",$7;
+        else printf "error\n"
+        }
+	
+	{       
+             if ($8~/pin[0-9][0-9][A-E]/) printf "%.5sA ",$8; 
+        else if ($8~/pin[0-9][0-9][F-J]/) printf "%.5sF ",$8;
+	else if ($8~/pin[0-9][0-9][X]/) printf "0 ",$8;
+        else if ($8~/pin[0-9][0-9][Y]/) printf "%.3sY ",$8;
+        else if ($8~/pin[0-9][0-9][W]/) printf "0 ",$8;
+        else if ($8~/pin[0-9][0-9][Z]/) printf "%.3sZ ",$8;
+        else if ($8~/pin[0-9][A-E]/) printf "%.4sA ",$8;
+        else if ($8~/pin[0-9][F-J]/) printf "%.4sF ",$8;
+        else if ($8~/pin[0-9][X]/) printf "0 ",$8;
+        else if ($8~/pin[0-9][Y]/) printf "%.3sY ",$8;
+        else if ($8~/pin[0-9][W]/) printf "0 ",$8;
+        else if ($8~/pin[0-9][Z]/) printf "%.3sZ ",$8;
+	else if ($8==0) printf "0 ",$8;
+        else if ($8=="") printf "\n",$8;
+        else printf "error\n"
+        }
+
+	{       
+             if ($9~/pin[0-9][0-9][A-E]/) printf "%.5sA ",$9; 
+        else if ($9~/pin[0-9][0-9][F-J]/) printf "%.5sF ",$9;
+	else if ($9~/pin[0-9][0-9][X]/) printf "0 ",$9;
+        else if ($9~/pin[0-9][0-9][Y]/) printf "%.3sY ",$9;
+        else if ($9~/pin[0-9][0-9][W]/) printf "0 ",$9;
+        else if ($9~/pin[0-9][0-9][Z]/) printf "%.3sZ ",$9;
+        else if ($9~/pin[0-9][A-E]/) printf "%.4sA ",$9;
+        else if ($9~/pin[0-9][F-J]/) printf "%.4sF ",$9;
+        else if ($9~/pin[0-9][X]/) printf "0 ",$9;
+        else if ($9~/pin[0-9][Y]/) printf "%.3sY ",$9;
+        else if ($9~/pin[0-9][W]/) printf "0 ",$9;
+        else if ($9~/pin[0-9][Z]/) printf "%.3sZ ",$9;
+	else if ($9==0) printf "0 ",$9;
+        else if ($9=="") printf "\n",$9;
+        else printf "error\n"
+        }
+
+	{       
+             if ($10~/pin[0-9][0-9][A-E]/) printf "%.5sA\n",$10; 
+        else if ($10~/pin[0-9][0-9][F-J]/) printf "%.5sF\n",$10;
+	else if ($10~/pin[0-9][0-9][X]/) printf "0\n",$10;
+        else if ($10~/pin[0-9][0-9][Y]/) printf "%.3sY\n",$10;
+        else if ($10~/pin[0-9][0-9][W]/) printf "0\n",$10;
+        else if ($10~/pin[0-9][0-9][Z]/) printf "%.3sZ\n",$10;
+        else if ($10~/pin[0-9][A-E]/) printf "%.4sA\n",$10;
+        else if ($10~/pin[0-9][F-J]/) printf "%.4sF\n",$10;
+        else if ($10~/pin[0-9][X]/) printf "0\n",$10;
+        else if ($10~/pin[0-9][Y]/) printf "%.3sY\n",$10;
+        else if ($10~/pin[0-9][W]/) printf "0\n",$10;
+        else if ($10~/pin[0-9][Z]/) printf "%.3sZ\n",$10;
+	else if ($10==0) printf "0\n",$10;
+        else if ($10=="") printf "\n",$10;
         else printf "error\n"
         }'
 	

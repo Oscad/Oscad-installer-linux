@@ -185,18 +185,20 @@ echo $line|awk '
                 c = $i
                 if(c != "gnd" && c != "vcc") {
 			
-			if(c=="s1") { s1 = $(i +1) }
-			else if(c=="s2") { s2 = $(i + 1) }
-			else if(c=="s3") { s3 = $(i + 1) }
-			else if(c=="r1") { r1 = $(i + 1) }
-			else if(c=="r2") { r2 = $(i + 1) }
-			else if(c=="r3") { r3 = $(i + 1) }
-			else if(c=="clk") { clk = $(i+1) }
-			else if(c=="NC") { NC = $(i+1) }
-			else if(c=="set") { set = $(i+1) }
-			else if(c=="reset") { reset = $(i+1) }
-			else if(c=="q") { q=$(i+1) }
-			else if(c=="qbar") { qbar=$(i+1) }
+			if(c=="s1") { s1 = $(i+1) }
+			else if(c=="s2") { s2 = $(i+1) }
+			else if(c=="r1") { r1 = $(i+1) }
+			else if(c=="r2") { r2 = $(i+1) }
+			else if(c=="clk1") { clk1 = $(i+1) }
+			else if(c=="clk2") { clk2 = $(i+1) }
+			else if(c=="set1") { set1 = $(i+1) }
+			else if(c=="set2") { set2 = $(i+1) }
+			else if(c=="reset1") { reset1 = $(i+1) }
+			else if(c=="reset2") { reset2 = $(i+1) }
+			else if(c=="q1") { q1=$(i+1) }
+			else if(c=="q2") { q2=$(i+1) }
+			else if(c=="qbar1") { qbar1=$(i+1) }
+			else if(c=="qbar2") { qbar2=$(i+1) }
 			
                  }
 		if(c=="gnd")
@@ -208,9 +210,8 @@ echo $line|awk '
                 vcc = $(i + 1)
                 }
 	}
-		print $1"0 " reset" "s1" "r1" "clk" "set" "q" "qbar" "gnd" "vcc 
-		print $1"1 " reset" "s2" "r2" "clk" "set" "q" "qbar" "gnd" "vcc
-		print $1"2 " reset" "s3" "r3" "clk" "set" "q" "qbar" "gnd" "vcc
+		print $1"0 " reset1" "s1" "r1" "clk1" "set1" "q1" "qbar1" "gnd" "vcc
+		print $1"1 " reset2" "s2" "r2" "clk2" "set2" "q2" "qbar2" "gnd" "vcc
 }'
 
 elif [[ $line =~ ^U_TFF ]];then

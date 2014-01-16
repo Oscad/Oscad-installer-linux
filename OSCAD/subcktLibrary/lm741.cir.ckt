@@ -1,3 +1,6 @@
+* eeschema netlist version 1.1 (spice format) creation date: friday 10 january 2014 03:37:10 pm ist
+
+u1  inv nonin vee out vcc port
 * The file may be copied, and distributed; however, reselling the 
 *  material is illegal
 
@@ -99,4 +102,5 @@ RL3 22 out 100K
 *
 .MODEL DX D(IS=1E-15)
 .MODEL QX NPN(BF=625)
+
 

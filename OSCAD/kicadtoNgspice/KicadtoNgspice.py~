@@ -2439,7 +2439,7 @@ def convertICintoBasicBlocks(schematicInfo,outputOption,guimodelvalue):
 	ic='  Enter initial condition on output (default=0): '
         print "-----------------------------------------------------------"
         guimodelvalue.append([index,compline,compType,compName,Comment,Title,words[1],ic])
-      elif compType=="opamp1":
+      elif compType=="opamp":
         f = open(OSCAD_HOME)
         data = f.read()
         schematicInfo.insert(index,data)

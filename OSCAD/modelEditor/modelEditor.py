@@ -60,6 +60,37 @@ def helpEditor(e=None):
 def aboutEditor():
   tkMessageBox.showinfo("About Editor","Created by Yogesh Dilip Save and Shalini Shrivastava")
 
+##Function to open select model from the list to modify it
+def openSelectModel(e=None):
+	filename=sys.argv[1]
+	#Getting lenght of Model List and clicked result
+	lenght_modlist,result=callModel(root,filename)
+	response=result
+	if result=="OK":
+	    for item in range(lenght_modlist-1):
+	        if response=="OK":	
+	           temp_lenght,temp_result=callModel(root,filename)
+		   response=temp_result
+	        else:
+		   break
+	    
+	else:
+	    pass
+	
+def callModel(root,filename):
+    model=selectModel.ModelNameList(root, filename)
+    if model.status:
+     # Open the circuit file
+       modelFile=model.modelName+".lib"
+     # Check model file already exists
+       if os.path.exists(modelFile):
+          if tkMessageBox.askokcancel("Model already exists","Do you want to edit?"):
+            modelParam = openModel.ExistingModelParam(root,model.modelName)
+       else:
+	    modelParam = newModel.ModelParam(root,model.modelName,model.modelType)
+    return len(model.modelList),model.click_result
+	
+
 root = Tk()
 root.title("Ngspice Model Editor")
 root.geometry("600x400+300+125")
@@ -73,6 +104,7 @@ filemenu= Menu(menu)
 menu.add_cascade(label="File", menu=filemenu)
 filemenu.add_command(label="New   F2", command=newEditor)
 filemenu.add_command(label="Open  F3", command=openEditor)
+filemenu.add_command(label="Add  F7",command=openSelectModel)
 filemenu.add_separator()
 filemenu.add_command(label="Import  F4", command=importEditor)
 filemenu.add_command(label="Export  F5", command=exportEditor)
@@ -86,11 +118,13 @@ helpmenu.add_command(label="Help  F1",command=helpEditor)
 helpmenu.add_command(label="About...",command=aboutEditor)
 
 # Select device from devices in circuit file
-filename=sys.argv[1]
-model=selectModel.ModelNameList(root, filename)
+
+"""model=selectModel.ModelNameList(root, filename)
+print "Model",model.modelList
+	
 
 if model.status:
- # Open the circuit file 
+ # Open the circuit file
   modelFile=model.modelName+".lib"
  # Check model file already exists
   if os.path.exists(modelFile):
@@ -98,7 +132,7 @@ if model.status:
       modelParam = openModel.ExistingModelParam(root,model.modelName)
   else:
     modelParam = newModel.ModelParam(root,model.modelName,model.modelType)
-
+"""
 # Protocol for deletion of main window
 root.protocol("WM_DELETE_WINDOW",exitEditor)
 
@@ -109,5 +143,6 @@ root.bind("<F4>", importEditor)
 root.bind("<F5>", exportEditor)
 root.bind("<F6>", exitEditor)
 root.bind("<F1>", helpEditor)
+root.bind("<F7>", openSelectModel)
 
 mainloop()

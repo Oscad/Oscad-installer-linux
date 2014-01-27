@@ -203,7 +203,7 @@ def openFritzing(e=None):
     text.yview(END)
   # Call all pending idle tasks, without processing any other events.
     update_idletasks()
-    command=self.OSCAD_HOME+"/fritzing-0.8.3b.linux.i386/Fritzing"
+    command=self.OSCAD_HOME+"/fritzing-0.8.5b/Fritzing"
     try:
         thread.start_new_thread(self.call_system,(command,))
     except Exception,err:

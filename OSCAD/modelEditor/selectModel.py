@@ -7,7 +7,6 @@
 
 from setPath import OSCAD_HOME
 from Tkinter import *
-from Tkinter import *
 import template
 import tkMessageBox
 import os.path
@@ -21,6 +20,9 @@ class ModelNameList():
     self.parent=parent
     self.modelName=""
     self.modelType=""
+    self.modelList=[]
+    self.click_result=""	
+    
   # Collect model information from the circuit file
     try:
       self.OSCAD_HOME=OSCAD_HOME
@@ -52,8 +54,8 @@ class ModelNameList():
     f.close()
     netlist=data.splitlines()
   # Find the various model library required
-    modelList=[]
     self.modelInfo={}
+    
     for eachline in netlist:
       eachline=eachline.strip()
       if len(eachline)>1:
@@ -61,37 +63,56 @@ class ModelNameList():
         words=eachline.split()
         if eachline[0]=='d':
           modelName=words[3]
-          modelType="D"
+	  modelType=words[3]
+          self.modelList.append(words[0]+":"+modelName)
+	  self.modelInfo[modelName]=modelType
         elif eachline[0]=='q':
           modelName=words[4]
-          modelType=raw_input('Please enter type of BJT '+words[0]+' (NPN/PNP): ')
-          modelType=modelType.upper()
-	elif eachline[0]=='m':
-          modelName=words[4]
-          modelType=raw_input(' Please enter type of MOS '+words[0]+' (nmos/pmos): ')
-          modelType=modelType.upper()
+	  if words[4]=='npn':
+          	modelType="NPN"
+	  elif words[4]=='pnp':
+	        modelType="PNP"
+	  else:
+	       modelType=words[4]	
+	       				
+          self.modelList.append(words[0]+":"+modelName)
+	  self.modelInfo[modelName]=modelType
+          
+        elif eachline[0]=='m':
+            modelName=words[4]
+	    if words[4]=='nmos':
+		modelType="NMOS"
+	    elif words[4]=='pmos':
+		modelType="PMOS"
+	    else:
+		modelType=words[4]
+	    self.modelList.append(words[0]+":"+modelName)
+	    self.modelInfo[modelName]=modelType
+	
         elif eachline[0]=='j':
-          modelName=words[4]
-          modelType=raw_input('Please enter type of JFET '+words[0]+'(nfet/pfet): ')
-          modelType=modelType.upper()
-
+	    modelName=words[4]
+	    if words[4]=='pjf':
+		modelType='PJF'
+	    elif words[4]=='njf':
+		modelType='NJF'
+	    else:
+		modelType=words[4]	    
+            self.modelList.append(words[0]+":"+modelName)
+	    self.modelInfo[modelName]=modelType
         else:
-          continue
-        if modelName in modelList:
-          continue
-        modelList.append(modelName)
-        self.modelInfo[modelName]=modelType
-
+	  continue
+	  
   # Create the dialog.
+      	
     self.dialog = Pmw.SelectionDialog(parent,
-      title = 'Model Selector',
-      buttons = ('OK', 'Cancel'),
-      defaultbutton = 'OK',
-      scrolledlist_labelpos = 'n',
-      label_text = 'Please select the model',
-      scrolledlist_items=modelList,
-      command = self.apply,
-    )
+          	title = 'Model Selector',
+          	buttons = ('OK', 'Cancel'),
+          	defaultbutton = 'OK',
+          	scrolledlist_labelpos = 'n',
+          	label_text = 'Please select the model',
+          	scrolledlist_items=self.modelList,
+          	command = self.apply,
+          	)
     self.dialog.pack(fill = 'both', expand=1, padx=5, pady=5)
     self.dialog.activate()
 
@@ -100,14 +121,16 @@ class ModelNameList():
 
   def apply(self,result):
     sels = self.dialog.getcurselection()
+    self.click_result=result    		
     if result=="OK":
       if len(sels) == 0:
         print 'You clicked on', result, '(no selection)'
         return
       else:
-        self.modelName=sels[0]
+        self.modelName=sels[0].partition(':')[2]
         self.modelType=self.modelInfo[self.modelName]
-        self.status=1
+	self.status=1
+	
     else:
       self.status=0
     self.dialog.withdraw()

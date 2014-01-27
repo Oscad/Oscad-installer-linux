@@ -42,6 +42,7 @@ class ExistingModelParam(template.MyTemplate):
 
   # Call base class MyTemplate
     template.MyTemplate.__init__(self,parent)
+    	
 
   def body(self, master):
   # Open template of the library file corresponding model 

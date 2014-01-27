@@ -2,6 +2,7 @@
 from Tkinter import *
 import os
 
+
 class MyTemplate(Toplevel):
   """Template to construct new window"""
 # Define constructor 
@@ -19,10 +20,12 @@ class MyTemplate(Toplevel):
  
   # Create a new frame
     body =Frame (self)
+    
    # Call body method  
     self.initial_focus = self.body(body)
    # Display body 
     body.pack(padx=5, pady=5)
+    
    # Create buttons 
     self.buttonbox()
    # Create status bar 
@@ -40,6 +43,7 @@ class MyTemplate(Toplevel):
   # Position the geometry respect to main window
     self.geometry("+%d+%d" % (parent.winfo_rootx()+50,parent.winfo_rooty()+50))
     self.initial_focus.focus_set()
+    	
 
   # Wait for widget to be destroyed
     self.wait_window(self)

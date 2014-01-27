@@ -105,17 +105,36 @@ function checkMetanet
 
 function CopyFritzing
 {
-  echo "Installing Fritzing"
-	
+  echo "Installing Fritzing" 
+  #Storing machine bit information
+  mc_bit_info=`uname -m`
+  if [ $? -eq 0 ]
+  then 
+  echo $mc_bit_info 
+  else
+  echo "Error in getiing machine bit information" 
+  fi		
   #untar at installed location
-  tar -xvf fritzing-0.8.3b.linux.i386.tar.bz2 -C $installDir/OSCAD  	
+  if [ $mc_bit_info == "i686" ]
+  then
+  echo "Untar 32-bit-fritzing" 
+  tar -xvf fritzing-0.8.5b.linux.i386.tar.bz2 -C $installDir/OSCAD --transform 's/fritzing-0.8.5b.linux.i386/fritzing-0.8.5b/'
+  elif [ $mc_bit_info == "x86_64" ]
+  then
+  echo "untar 64-bit-fritzing" 
+  tar -xvf fritzing-0.8.5b.linux.AMD64.tar.bz2 -C $installDir/OSCAD --transform 's/fritzing-0.8.5b.linux.AMD64/fritzing-0.8.5b/'
+  else
+  echo "Fritzing is not installed proplerly" 
+  fi 
+      	
   RetVal=$?
   if [ $RetVal -eq 0 ]
   then
-  echo "Fritzing Installed Sucessfully"
+  echo "Fritzing Installed Sucessfully" 
   else
-  echo "Fritzing is not Installed"
+  echo "Fritzing is not Installed" 
   fi
+  
   : <<'block' 
   echo "Copying file in .config/Fritzing"
   if [ -d $HOME/.config/Fritzing ]
@@ -137,7 +156,7 @@ block
   ##Copying setPath.py to Fritzing Directory
   cp -p $installDir/OSCAD/setPath.py $installDir/OSCAD/Fritzingtokicad/setPath.py
   
-  echo "Fritzing Installation completed"			
+  echo "Fritzing Installation completed" 			
 }
 
 

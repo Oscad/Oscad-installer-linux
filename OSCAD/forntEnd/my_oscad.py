@@ -199,11 +199,12 @@ def openNgspice(e=None):
     text.yview(END)
 
 def openFritzing(e=None):
-    text.insert(END, "  Running ngspice circuit simulator .........\n")
+    text.insert(END, "  Running Fritzing .........\n")
     text.yview(END)
   # Call all pending idle tasks, without processing any other events.
     update_idletasks()
-    command=self.OSCAD_HOME+"/fritzing-0.8.5b/Fritzing"
+    #command="xterm -e \""+self.OSCAD_HOME+"/fritzing-0.8.5b/Fritzing "+self.projectName+".fzz\""
+    command=self.OSCAD_HOME+"/fritzing-0.8.5b/Fritzing " +self.projectName+".fzz "
     try:
         thread.start_new_thread(self.call_system,(command,))
     except Exception,err:

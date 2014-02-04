@@ -8,14 +8,12 @@ from Tkinter import *
 from tkFileDialog import askopenfilename
 from setPath import OSCAD_HOME	
 
-#sys.path.insert(0, '/home/fahimk/Oscad_Work/installed_OSCAD/OSCAD/forntEnd')
-
 
 def main():
 
         root=Tk()
 	global fname        
-	fname = askopenfilename(filetypes=[("allfiles","*"),("pythonfiles","*.py")])
+	fname = askopenfilename(filetypes=[("allfiles","*.fzz")])
 	path_dir=os.path.dirname(fname)
         print fname
 	os.chdir(path_dir)

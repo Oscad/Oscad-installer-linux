@@ -1,5 +1,5 @@
 #!/bin/bash
-#test
+#
 # installOSCAD.sh is a part of OSCAD.
 # Original Author: Yogesh Dilip Save (yogessave@gmail.com)
 # Copyright (C) 2012 Yogesh Dilip Save, FOSS Project, IIT Bombay.
@@ -346,6 +346,41 @@ cp -v oscad.desktop $HOME/Desktop/
 
 ##Installing Fritzing
 CopyFritzing
+
+function import_kicad_lib() {
+
+    # Copy Oscad libraries to kicad lib directory
+    cp -r ../Oscad-installer-linux/OSCAD/library/*.lib /usr/share/kicad/library/
+    # --------------------
+    # Full path of 'kicad.pro file'[Verified for Ubuntu 12.04]
+    KICAD_PRO="/usr/share/kicad/template/kicad.pro"
+    # --------------------
+
+    # Get number of libs in Oscad/Library directory
+    kicadlibfiles_num=$(cat ${KICAD_PRO} | awk "/\[eeschema\/libraries\]/,/\[cvpcb\]/" | grep -i "LibName" | wc -l)
+
+    # Remove string '.lib' as 'kicad.pro' does not store library name
+    # with '.lib' as a suffix
+    libfiles=$(ls -1 ../Oscad-installer-linux/OSCAD/library | grep ".lib")
+
+    # Start the counter from number of libs already available
+    COUNTER=${kicadlibfiles_num}
+
+    # Make a copy of original file by the extension .original
+    cp -rv ${KICAD_PRO}{,.original}
+    
+    # Write lib in a loop
+    for i in ${libfiles}
+    do
+	COUNTER=$((COUNTER + 1))
+	FILENAME=$(echo ${i} | sed -e "s/.lib//g" | sed -e "s/^/LibName${COUNTER}=/")
+	#echo $FILENAME
+	#echo "LibName$((COUNTER - 1))"
+	sed -i -e '/LibName'"$((COUNTER - 1))"'/a '"${FILENAME}"'' ${KICAD_PRO}
+    done
+}
+
+import_kicad_lib
 
 echo "Installation completed"
 

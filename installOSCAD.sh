@@ -351,6 +351,7 @@ function import_kicad_lib() {
 
     # Copy Oscad libraries to kicad lib directory
     cp -r ../Oscad-installer-linux/OSCAD/library/*.lib /usr/share/kicad/library/
+    cp -r ../Oscad-installer-linux/OSCAD/library/*.dcm /usr/share/kicad/library/
     # --------------------
     # Full path of 'kicad.pro file'[Verified for Ubuntu 12.04]
     KICAD_PRO="/usr/share/kicad/template/kicad.pro"

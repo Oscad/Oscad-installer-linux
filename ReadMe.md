@@ -26,11 +26,11 @@ step. This feature is unique to OSCAD.
 
 * On the terminal, enter this directory
 
-      cd Oscad-installer-linux
+        cd Oscad-installer-linux
 
 * Execute the installer script
 
-      sudo bash ./installOSCAD.sh
+        sudo bash ./installOSCAD.sh
 
 * You may have to give proxy-server credentials when prompted
 

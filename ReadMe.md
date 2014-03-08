@@ -1,20 +1,19 @@
-# OSCAD - Open Source Computer Aided Design(GNU/linux)
+# Open Source Computer Aided Design
 
-![OSCAD
- logo](https://github.com/Oscad/Oscad-installer-linux/blob/master/OSCAD/images/logo.png "OSCAD logo")
+![OSCAD logo](./OSCAD/images/logo.png "OSCAD logo")
 
 ## About
 
-OSCAD is a free and open source EDA tool. It is created using open
-source packages, such as KiCad, NgSpice, Scilab and Python. Using
-OSCAD we can create circuit schematics, perform simulations and design
-PCB layouts. It can create or edit new device models, and create or
-edit subcircuits for simulations. It also has a Scilab based Mini
-Circuit Simulator(SMCSim), which is capable of giving the circuit
-equation for each simulation step. This feature is unique to OSCAD.
+OSCAD is a free and open source EDA tool created using open source
+packages, such as KiCad, NgSpice, Scilab and Python. OSCAD can be used
+to create circuit schematics, perform simulations and design PCB
+layouts. It can also create or edit new device models, and
+sub-circuits for simulations. It has Scilab based Mini Circuit
+Simulator(SMCSim), which gives the circuit equation for each simulated
+step. This feature is unique to OSCAD.
 
 
-## System requirements
+## System requirement
 
 * Ubuntu 12.04(32/64-bits) or later
 * Scilab 5.4.0 or later
@@ -25,31 +24,47 @@ equation for each simulation step. This feature is unique to OSCAD.
 
 ## Install
 
-Please refer OSCAD book, Chapter 2 for installation instructions
+* On the terminal, enter this directory
 
+        cd Oscad-installer-linux
+
+* Execute the installer script
+
+        sudo bash ./installOSCAD.sh
+
+* You may have to give proxy-server credentials when prompted
+
+* Please refer the Chapter-2 from
+  [Oscad book](http://www.oscad.in/resource/book/oscad.pdf) for detail
+  install instructions
 
 ## Usage
 
-Please refer OSCAD book, Chapter 4 for detailed usage
-Please note that Fritzing simulation through OSCAD is only for analog components,however you can get schematic and PCB view for all components.
+Please refer Chapter 4 for detailed usage. Note that Fritzing
+simulation through OSCAD is meant for analog components, however one
+can get schematic and PCB views for all components.
 
 ## Documentation
 
-For documentation and OSCAD book, please refer to `Book` repo
+Entire documentation and usage is assembled in
+[Oscad book](http://www.oscad.in/resource/book/oscad.pdf)
 
 
 ## Contribute
 
 * You can contribute to Source code as well as documentation
 * Fork this repo
-* Make a seperate branch. Branch name should reflect your new feature
+* Make a separate branch. Branch name should reflect your new feature
   or a module
 * Send us a pull request
 
+## Contact
+
+[www.oscad.in](http://www.oscad.in/)
 
 ## License
 
-OSCAD is distrubuted under
+OSCAD is distributed under
 [GNU GPL Version 3](http://www.gnu.org/licenses/gpl-3.0.txt)
 
 All rights belong to the National Mission on Education through ICT,

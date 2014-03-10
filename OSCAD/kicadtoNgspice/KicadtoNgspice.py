@@ -1224,7 +1224,7 @@ def AddModelParametr():
 	        if reset_load=="": reset_load="1e-12"
 	        if rise_delay=="": rise_delay="1e-12"
 	        if fall_delay=="": fall_delay="1e-12"
-	        addmodelline=".model "+ line[3]+" d_srff(rise_delay="+rise_delay+" fall_delay="+fall_delay+" ic="+ic+"\n+sr_load="+sr_load+" clk_load="+clk_load+" set_load="+set_load+" reset_load="+reset_load+"\n+clk_delay="+enable_delay+" set_delay="+set_delay+" reset_delay="+reset_delay+")"
+	        addmodelline=".model "+ line[3]+" d_srff(rise_delay="+rise_delay+" fall_delay="+fall_delay+" ic="+ic+"\n+sr_load="+sr_load+" clk_load="+clk_load+" set_load="+set_load+" reset_load="+reset_load+"\n+clk_delay="+clk_delay+" set_delay="+set_delay+" reset_delay="+reset_delay+")"
 		modelparamvalue.append([line[0],addmodelline,line[4]])
 	     except:
 		print "Caught an exception in d_srff model ",line[1] 

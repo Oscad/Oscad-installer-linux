@@ -1,0 +1,5 @@
+*5um technology
+
+.model mos_p PMOS( Cgso=4e-10 Tox=8.5e-8 Vto=-1 phi=0.65
++ Level=1
++ Mj=.5 UO=250 Cgdo=4e-10 Gamma=0.65 LAMBDA= 0.03 LD = 6e-7 JS = 1e-6 CJ = 1.8e-4 CJSW = 6e-10 MJSW = 0.5 PB = 0.7 CGBO = 2e-10  )

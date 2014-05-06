@@ -1,0 +1,5 @@
+* 5um technology
+
+.model mos_n NMOS( Cgso=4e-10 Tox=8.5e-8 Vto=1 phi=0.7 
++ Level=1
++ Mj=.5 UO=750 Cgdo=4e-10 Gamma=1.4 LAMBDA= 0.01 LD = 7e-7 JS = 1e-6 CJ = 4e-4 CJSW = 8e-10 MJSW = 0.5 PB = 0.7 CGBO = 2e-10  )

@@ -34,10 +34,28 @@ def openEditor(e=None):
 # Import an existing model from library
 def importEditor(e=None):
   model=importModel.ImportModel(root)
-  if os.system("cp "+OSCAD_HOME+"/modelLibrary/"+model.modelName+" ."):
-    tkMessageBox.showerror("Import Failed","Unable to import model file "+model.modelName)
+  temp_model_name=model.modelName
+  if temp_model_name.startswith('NMOS',0,4):
+    if os.system("cp "+OSCAD_HOME+"/modelLibrary/"+model.modelName+" mos_n.lib"):
+      tkMessageBox.showerror("Import Failed","Unable to import model file "+model.modelName)
+    else:
+      tkMessageBox.showinfo("Successfully imported","Model file "+model.modelName+" is successfully imported to the project.") 
+  elif temp_model_name.startswith('PMOS',0,4):
+    if os.system("cp "+OSCAD_HOME+"/modelLibrary/"+model.modelName+" mos_p.lib"):
+      tkMessageBox.showerror("Import Failed","Unable to import model file "+model.modelName)
+    else:
+      tkMessageBox.showinfo("Successfully imported","Model file "+model.modelName+" is successfully imported to the project.")
+  elif temp_model_name.startswith('D',0,1):
+    if os.system("cp "+OSCAD_HOME+"/modelLibrary/"+model.modelName+" 1n4007.lib"):
+      tkMessageBox.showerror("Import Failed","Unable to import model file "+model.modelName)
+    else:
+      tkMessageBox.showinfo("Successfully imported","Model file "+model.modelName+" is successfully imported to the project.") 
   else:
-    tkMessageBox.showinfo("Successfully imported","Model file "+model.modelName+" is successfully imported to the project.") 
+    if os.system("cp "+OSCAD_HOME+"/modelLibrary/"+model.modelName+" ."):
+      tkMessageBox.showerror("Import Failed","Unable to import model file "+model.modelName)
+    else:
+      tkMessageBox.showinfo("Successfully imported","Model file "+model.modelName+" is successfully imported to the project.") 
+
 
 # Export an existing model to library
 def exportEditor(e=None):
@@ -103,8 +121,8 @@ root.config(menu=menu)
 filemenu= Menu(menu)
 menu.add_cascade(label="File", menu=filemenu)
 filemenu.add_command(label="New   F2", command=newEditor)
-filemenu.add_command(label="Open  F3", command=openEditor)
-filemenu.add_command(label="Add  F7",command=openSelectModel)
+#filemenu.add_command(label="Open  F3", command=openEditor)
+filemenu.add_command(label="Edit  F7",command=openSelectModel)
 filemenu.add_separator()
 filemenu.add_command(label="Import  F4", command=importEditor)
 filemenu.add_command(label="Export  F5", command=exportEditor)
@@ -138,7 +156,7 @@ root.protocol("WM_DELETE_WINDOW",exitEditor)
 
 # Create shortcut keys
 root.bind("<F2>", newEditor)
-root.bind("<F3>", openEditor)
+#root.bind("<F3>", openEditor)
 root.bind("<F4>", importEditor)
 root.bind("<F5>", exportEditor)
 root.bind("<F6>", exitEditor)

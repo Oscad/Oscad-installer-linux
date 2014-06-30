@@ -20,7 +20,6 @@ import toolTip
 import selectOption
 from string import maketrans
 from PIL import Image, ImageTk
-from KicadtoNgspice import mainFunc
 
 class ProjectInfo(template.MyTemplate):
   """ Class for accept model information from  user """

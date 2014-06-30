@@ -20,8 +20,7 @@ import toolTip
 import selectOption
 from string import maketrans
 from PIL import Image, ImageTk
-
-
+from KicadtoNgspice import mainFunc
 
 class ProjectInfo(template.MyTemplate):
   """ Class for accept model information from  user """
@@ -260,11 +259,13 @@ class ProjectParam(template.MyTemplate):
     self.text.yview(END)
   # Call all pending idle tasks, without processing any other events.
     self.update_idletasks()
-    command="xterm -e \""+self.OSCAD_HOME+"/kicadtoNgspice/KicadtoNgspice.py "+self.projectName+".cir 1\""
+    command="xterm -e python "+self.OSCAD_HOME+"/kicadtoNgspice/KicadtoNgspice.py "+self.projectName+".cir 1"
+    #command=self.OSCAD_HOME+"/kicadtoNgspice/KicadtoNgspice.py "+self.projectName+".cir 1\""
     try:
         thread.start_new_thread(self.call_system,(command,))
     except Exception,err:
         print err
+    # mainFunc(self.projectName+".cir","1")    
     self.text.insert(END, "Select a tool from tool menu\n")
     self.text.yview(END)
 
@@ -318,6 +319,7 @@ class ProjectParam(template.MyTemplate):
         thread.start_new_thread(self.call_system,(command,))
     except Exception,err:
         print err
+    mainFunc(os.getcwd(),self.projectName)	
     self.text.insert(END, "Select a tool from tool menu\n")
     self.text.yview(END)
 

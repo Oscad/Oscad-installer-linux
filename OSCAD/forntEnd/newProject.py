@@ -90,7 +90,7 @@ class ProjectParam(template.MyTemplate):
 
   def body(self, master):
     w, h = master.winfo_screenwidth(), master.winfo_screenheight()
-    self.geometry("%dx%d" % (0.075*w, 0.8*h))
+    self.geometry("%dx%d" % (0.075*w, 0.83*h))
     self.resizable(0,0)
     self.attributes("-topmost",True)
 
@@ -132,7 +132,7 @@ class ProjectParam(template.MyTemplate):
     # Set frame for command buttons
     buttonWindow = Frame(self, bd=4, relief=SUNKEN)
     buttonWindow.pack(side=LEFT,fill="both", padx=2, pady=2,expand="Y")
-    buttonWindow.place(relheight=0.95, relwidth=0.87, rely=0.02, relx=0.07)
+    buttonWindow.place(relheight=1.05, relwidth=0.87, rely=0.02, relx=0.07)
     
     """buttonWindow1 = Frame(self, bd=4, relief=SUNKEN)
     buttonWindow1.pack(side=TOP,fill="both", padx=2, pady=2,expand="Y")
@@ -154,6 +154,8 @@ class ProjectParam(template.MyTemplate):
         self.createButtonForCommandWithScilab(buttonWindow,self.openSubcircuitBuilder,self.OSCAD_HOME+"/images/sub.png","Subcircuit builder")
 	self.createButtonForCommandWithScilab(buttonWindow,self.openFritzing,self.OSCAD_HOME+"/images/fritzing.png","Fritzing")
 	self.createButtonForCommandWithScilab(buttonWindow,self.openFritzingtoKicad,self.OSCAD_HOME+"/images/Fr-Ki.png","Fritzing to Kicad")
+	self.createButtonForCommandWithScilab(buttonWindow,self.openModelicaConverter,self.OSCAD_HOME+"/images/omedit.png","Modelica Converter")
+    	self.createButtonForCommandWithScilab(buttonWindow,self.omoptim,self.OSCAD_HOME+"/images/omoptim.png","Optimisation")
 
     def createToolboxWithoutScilab():
         self.createButtonForCommandWithoutScilab(buttonWindow,self.openSchematic,self.OSCAD_HOME+"/images/se.png","Schematic Editor")
@@ -166,6 +168,8 @@ class ProjectParam(template.MyTemplate):
         self.createButtonForCommandWithoutScilab(buttonWindow,self.openSubcircuitBuilder,self.OSCAD_HOME+"/images/sub.png","Subcircuit builder")
 	self.createButtonForCommandWithoutScilab(buttonWindow,self.openFritzing,self.OSCAD_HOME+"/images/fritzing.png","Fritzing")
 	self.createButtonForCommandWithoutScilab(buttonWindow,self.openFritzingtoKicad,self.OSCAD_HOME+"/images/Fr-Ki.png","Fritzing to Kicad")
+	self.createButtonForCommandWithoutScilab(buttonWindow,self.openModelicaConverter,self.OSCAD_HOME+"/images/omedit.png","Modelica Converter")
+    	self.createButtonForCommandWithoutScilab(buttonWindow,self.omoptim,self.OSCAD_HOME+"/images/omoptim.png","Optimisation")
     
     if os.path.isfile(OSCAD_HOME + "/bin/scilab54"):
         createToolboxWithScilab()
@@ -364,6 +368,40 @@ class ProjectParam(template.MyTemplate):
         print err
     self.text.insert(END, "Select a tool from tool menu\n")
     self.text.yview(END)
+  def openModelicaConverter(self,e=None):
+    self.text.insert(END, "  Running modelica converter .........\n")
+    self.text.yview(END)
+
+  # Call all pending idle tasks, without processing any other events.
+    self.update_idletasks()
+
+    command="python "+self.OSCAD_HOME+"/NgspicetoModelica/NgspicetoModelica.py "+self.projectName+".cir.out"
+    command1="OMEdit "+self.projectName+".mo "
+    print command
+
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+        thread.start_new_thread(self.call_system,(command1,))
+    except Exception,err:
+        print err
+    self.text.insert(END, "Select a tool from tool menu\n")
+    self.text.yview(END)
+   
+  def omoptim(self,e=None):
+    self.text.insert(END, "  Running omoptim .........\n")
+    self.text.yview(END)
+
+  # Call all pending idle tasks, without processing any other events.
+    self.update_idletasks()
+
+    command="OMOptim "
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+    self.text.insert(END, "Select a tool from tool menu\n")
+    self.text.yview(END)
+
 
   def helpProject(self,e=None):
     pass

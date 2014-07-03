@@ -239,6 +239,35 @@ def openSMCSim(e=None):
     text.insert(END, "Select a tool from tool menu\n")
     text.yview(END)
 
+# Open Ngspice to Modelica converter
+def openModelicaConverter(e=None):
+    text.insert(END, "  Running modelica converter .........\n")
+    text.yview(END)
+  # Call all pending idle tasks, without processing any other events.
+    update_idletasks()
+    command="python" +self.OSCAD_HOME+"/NgspicetoModelica/NgspicetoModelica.py "+self.projectName+".cir.out"
+    command1="OMEdit "+self.projectName+".mo "
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+        thread.start_new_thread(self.call_system,(command1,))
+    except Exception,err:
+        print err
+    text.insert(END, "Select a tool from tool menu\n")
+    text.yview(END)
+
+# Open OMOptim
+def omoptim(e=None):
+    text.insert(END, "  Opening omoptim .........\n")
+    text.yview(END)
+  # Call all pending idle tasks, without processing any other events.
+    update_idletasks()
+    command="OMOptim "
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+    text.insert(END, "Select a tool from tool menu\n")
+    text.yview(END)
 
 # Create and configure a graphical window
 root = Tk()
@@ -302,7 +331,8 @@ createButtonForCommand(buttonWindow,openNgspice,OSCAD_HOME+"/images/ngLogo.jpg",
 createButtonForCommand(buttonWindow,openSMCSim,OSCAD_HOME+"/images/slLogo.jpg","SMCSim")
 createButtonForCommand(buttonWindow,openFritzing,OSCAD_HOME+"/images/knLogo.jpg","Fritzing")
 createButtonForCommand(buttonWindow,openFritzingtoKicad,OSCAD_HOME+"/images/knLogo.jpg","Fritzing to Kicad")
-
+createButtonForCommand(buttonWindow,openModelicaConverter,OSCAD_HOME+"/images/omedit.png","Modelica Converter")
+createButtonForCommand(buttonWindow,omoptim,OSCAD_HOME+"/images/omoptim.png","Optimisation")
 
 reportWindow = LabelFrame(root, bd=4, relief=SUNKEN,text="Report Window")
 reportWindow.pack(side=BOTTOM,fill="both", padx=5, pady=5,expand="Y")

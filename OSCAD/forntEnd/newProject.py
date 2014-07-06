@@ -318,9 +318,17 @@ class ProjectParam(template.MyTemplate):
         thread.start_new_thread(self.call_system,(command,))
     except Exception,err:
         print err
-    mainFunc(os.getcwd(),self.projectName)	
     self.text.insert(END, "Select a tool from tool menu\n")
     self.text.yview(END)
+
+    # opening pythonplotting:
+    command ="python " + self.OSCAD_HOME+"/forntEnd/pythonPlotting.py "+os.getcwd()+" "+self.projectName
+
+    try:
+        thread.start_new_thread(self.call_system,(command,))
+    except Exception,err:
+        print err
+
 
   def openFritzing(self,e=None):
     self.text.insert(END, "  Running Fritzing .........\n")
